@@ -22,7 +22,7 @@ exercise2 = Exercise.create(name: "BENCH", description: "push heavy weights", ca
 exercise3 = Exercise.create(name: "Downward Dog", description: "Calming", category: "yoga")
 exercise4 = Exercise.create(name: "Walking", description: "Relaxing", category: "cardio")
 exercise5 = Exercise.create(name: "Hot-Yoga", description: "Weight Loss", category: "yoga")
-exercise6 = Exercise.create(name: "Squat", description: "GET BIGG!", category: "stregth")
+exercise6 = Exercise.create(name: "Squat", description: "GET BIGG!", category: "strength")
 
 
 

@@ -1,0 +1,17 @@
+<h1 align="center">Your Profile Information</h1>
+
+<hr>
+
+<h3>Hi <%= @user.name %> </h3>
+
+<p>Hometown: <%= @user.hometown %> </p>
+
+<h4>Your plan includes: </h4>
+<% @user.exercises.each do |exercise| %>
+<fieldset>
+<p> <strong> <%= exercise.name %> </strong> </p>  <br>
+<p> <%= exercise.description %> </p> <br>
+</fieldset>
+<% end %>
+
+<%= link_to "Add New Workout to Your Repetoire!", new_user_exercise_path %>
