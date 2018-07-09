@@ -20,6 +20,11 @@ class UserExercisesController < ApplicationController
   end
 
   def update
+    if @userexercise.update(user_exercise_params)
+      redirect_to user_path(@userexercise.user)
+    else
+      render :edit
+    end
   end
 
 
@@ -29,7 +34,7 @@ class UserExercisesController < ApplicationController
     params.require(:user_exercise).permit(:user_id, :exercise_id)
   end
 
-  def user_exerciser_params
+  def user_exercise_params
     params.require(:user_exercise).permit(:pace, :distance, :max_weight, :courses_attended, :endurance)
   end
 
