@@ -1,8 +1,9 @@
-<h1 align = "center">Add an Exercise!</h1>
+<h1 align = "center">Add a Fitness Goal!</h1>
 <hr>
 
 <%= form_with model: @userexercise do |f|  %>
 <%= f.collection_select :user_id, User.all, :id, :name %>
+<%= f.label :exercise_id, 'Choose an Exercise!' %>
 <%= f.collection_select :exercise_id, Exercise.all, :id, :name   %>
 <%= f.submit %>
 <% end %>

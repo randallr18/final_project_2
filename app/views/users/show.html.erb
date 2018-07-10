@@ -7,10 +7,10 @@
 <p>Hometown: <%= @user.hometown %> </p>
 
 <h4>Your plan includes: </h4>
-<% @user.exercises.each do |exercise| %>
+<% @user.user_exercises.each do |goal| %>
 <fieldset>
-<p> <strong> <%= exercise.name %> </strong> </p>  <br>
-<p> <%= exercise.description %> </p> <br>
+<p> <strong> <%=link_to goal.exercise.name, user_exercise_path(goal) %> </strong> </p>  <br>
+<p> <%= goal.exercise.description %> </p> <br>
 </fieldset>
 <% end %>
 
