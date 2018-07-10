@@ -3,7 +3,7 @@
 <% when "Distance" %>
 <p>What is your goal?</p>
   <%= form_for @userexercise do |f| %>
-  <p> I currently can run <%= f.text_field :progress %> miles, but I want to run <%= f.text_field :goal %> miles!!</p>
+  <p> I currently can run <%= f.text_field :progress %> kilometers, but I want to run <%= f.text_field :goal %> kilometers!!</p>
   <%= f.submit %>
   <% end %>
 
@@ -17,7 +17,7 @@
 <% when "Speed" %>
 <p>What is your goal?</p>
   <%= form_for @userexercise do |f| %>
-  <p> I currently fast <%= f.text_field :progress %> MPH, but I want speed of <%= f.text_field :goal %> miles per hour!!</p>
+  <p> I currently fast <%= f.text_field :progress %> km per hour, but I want speed of <%= f.text_field :goal %> km per hour!!</p>
   <%= f.submit %>
   <% end %>
 
@@ -25,14 +25,14 @@
 <% when "Strength Training" %>
   <p>What is your goal?</p>
     <%= form_for @userexercise do |f| %>
-    <p> I currently can lift <%= f.text_field :progress %> pounds, but I want to lift <%= f.text_field :goal%> pounds!</p>
+    <p> I currently can lift <%= f.text_field :progress %> kilograms, but I want to lift <%= f.text_field :goal%> kilograms!</p>
     <%= f.submit %>
     <% end %>
 
 <% when "Pace" %>
   <p>What is your goal?</p>
     <%= form_for @userexercise do |f| %>
-    <p> I currently attend <%= f.text_field :progress %> classes a month, but I want to attend <%= f.text_field :goal %> classes per month!</p>
+    <p> I currently run <%= f.text_field :progress %> km per hour, but I want to attend <%= f.text_field :goal %> km per hour!</p>
     <%= f.submit %>
     <% end %>
 
