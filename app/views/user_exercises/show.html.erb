@@ -1,4 +1,8 @@
 <h1>Here's your Progress on your fitness goal!</h1>
 
+<% if @userexercise.goal != nil %>
 <p>You can run <%= @userexercise.progress %> miles making you <%= @userexercise.progress_pct %> of the way to your goal to run <%= @userexercise.goal %> miles!</p>
 <p></p>
+<% else %>
+<p>You need to <%= link_to "update your goals!", edit_user_exercise_path(@userexercise) %> </p>
+<% end %>
