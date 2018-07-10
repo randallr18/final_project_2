@@ -1,31 +1,26 @@
 
-
-
-<% if @userexercise.exercise.category == "cardio" %>
-
+<% case @userexercise.exercise.category  %>
+<% when "cardio" %>
 <p>What is your goal?</p>
   <%= form_for @userexercise do |f| %>
   <p> I currently can run <%= f.text_field :progress %> miles, but I want to run <%= f.text_field :goal %> miles!!</p>
   <%= f.submit %>
   <% end %>
-
-<% elsif @userexercise.exercise.category == "strength" %>
-
+  
+<% when "strength" %>
   <p>What is your goal?</p>
     <%= form_for @userexercise do |f| %>
     <p> I currently can lift <%= f.text_field :progress %> pounds, but I want to lift <%= f.text_field :goal%> pounds!</p>
     <%= f.submit %>
     <% end %>
 
-<% elsif @userexercise.exercise.category == "yoga" %>
-
+<% when "yoga" %>
   <p>What is your goal?</p>
     <%= form_for @userexercise do |f| %>
     <p> I currently attend <%= f.text_field :progress %> classes a month, but I want to attend <%= f.text_field :goal %> classes per month!</p>
     <%= f.submit %>
     <% end %>
-
-    <% end %>
+  <% end %>
 
 <!-- form for @userexercise
 f.label :pace
