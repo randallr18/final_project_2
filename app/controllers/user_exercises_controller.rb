@@ -35,7 +35,7 @@ class UserExercisesController < ApplicationController
   private
 
   def init_params
-    params.require(:user_exercise).permit(:user_id, :exercise_id)
+    params.require(:user_exercise).permit(:user_id, :exercise_id, :category_id)
   end
 
   def user_exercise_params
