@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 2018_07_10_190956) do
     t.integer "exercise_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "progress"
-    t.integer "goal"
+    t.float "progress"
+    t.float "goal"
     t.string "goal_category"
     t.index ["exercise_id"], name: "index_user_exercises_on_exercise_id"
     t.index ["user_id"], name: "index_user_exercises_on_user_id"
