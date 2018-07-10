@@ -11,6 +11,7 @@
 <fieldset>
 <p> <strong> <%=link_to goal.exercise.name, user_exercise_path(goal) %> </strong> </p>  <br>
 <p> <%= goal.exercise.description %> </p> <br>
+<p> <%= button_to "Adjust your goal!", edit_user_exercise_path(goal), method: 'get' %> </p>
 </fieldset>
 <% end %>
 
