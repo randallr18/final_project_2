@@ -1,0 +1,18 @@
+<h1>Add a New Meal!</h1>
+
+<%= form_for @recipe do |f| %>
+
+<%= f.label :name %>:
+<%= f.text_field :name %>
+<br> <br>
+<%= f.label :protein %>:
+<%= f.text_field :protein %>
+<br> <br>
+<%= f.label :carbohydrate %>:
+<%= f.text_field :carbohydrate %>
+<br> <br>
+<%= f.label :fat %>:
+<%= f.text_field :fat %>
+<br> <br>
+<%= f.submit %>
+<% end %>

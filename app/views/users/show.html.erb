@@ -20,4 +20,14 @@
 <br>
 <br>
 
+<% @user.recipes.each do |meal| %>
+<%= meal.name %>
+<br>
+<br>
+<% end %>
+
+<br>
+<br>
+
+
 <%= link_to "Record Meal", user_choice_path %>

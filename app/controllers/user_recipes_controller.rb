@@ -12,6 +12,7 @@ class UserRecipesController < ApplicationController
   end
 
   def create
+    byebug
     @user_recipe = UserRecipe.new(recipe_user_params)
     @user_recipe.user_id = @logged_in_user.id
     if @user_recipe.save
@@ -24,7 +25,7 @@ class UserRecipesController < ApplicationController
   private
 
   def recipe_user_params
-    params.require(:user_recipe).permit(:recipe_id)
+    params.require(:user_recipe).permit(:recipe_id, "date_consumed(1i)", "date_consumed(2i)", "date_consumed(3i)")
   end
 
 
