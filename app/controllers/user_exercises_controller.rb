@@ -1,6 +1,6 @@
 class UserExercisesController < ApplicationController
 
-  before_action :get_user_exercise, only: [:edit, :update, :show]
+  before_action :get_user_exercise, only: [:edit, :update, :show, :destroy]
 
   def show
   end
@@ -29,6 +29,11 @@ class UserExercisesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @userexercise.destroy
+    redirect_to user_path(@userexercise.user)
   end
 
 
