@@ -1,6 +1,6 @@
 <h1>Login!</h1>
 
-<%= form_with(scope: "session", url: new_login_path, local: true) do |form| %>
+<%= form_with(scope: "session", url: sessions_path, local: true) do |form| %>
   <% if @error %>
     <div id="error_explanation">
       <h2>An error prohibited this user from being saved:</h2>
