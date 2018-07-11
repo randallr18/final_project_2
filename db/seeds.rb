@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-User.delete_all
-Exercise.delete_all
-UserExercise.delete_all
+# User.delete_all
+# Exercise.delete_all
+# UserExercise.delete_all
 
 user1 = User.create(name: "Jarret", username:"jarrettt", hometown: "New York")
 user2 = User.create(name: "Risher", username:"rish-randall", hometown: "Houston")
@@ -39,3 +39,12 @@ num7 = UserExercise.create(user_id: user4.id, exercise_id: exercise5.id)
 num8 = UserExercise.create(user_id: user4.id, exercise_id: exercise1.id)
 num9 = UserExercise.create(user_id: user4.id, exercise_id: exercise6.id)
 num10 = UserExercise.create(user_id: user5.id, exercise_id: exercise2.id)
+
+
+
+recipe1 = Recipe.create(name: "burger", carbohydrate: 33, protein: 40, fat: 20, calorie_count: 800)
+recipe2 = Recipe.create(name: "pizza", carbohydrate: 20, protein: 15, fat: 20, calorie_count: 600)
+recipe3 = Recipe.create(name: "BBQ", carbohydrate: 25, protein: 40, fat: 20, calorie_count: 900)
+recipe4 = Recipe.create(name: "sushi", carbohydrate: 10, protein: 40, fat: 10, calorie_count: 400)
+recipe5 = Recipe.create(name: "sandwich", carbohydrate: 25, protein: 20, fat: 20, calorie_count: 500)
+recipe6 = Recipe.create(name: "salad", carbohydrate: 33, protein: 40, fat: 20, calorie_count: 100)

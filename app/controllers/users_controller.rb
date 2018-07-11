@@ -6,8 +6,12 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def choice
+  end
+
   def show
   end
+
 
   private
 

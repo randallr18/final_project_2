@@ -1,0 +1,14 @@
+<h1>Find New Recipe!</h1>
+
+<br>
+<br>
+<h1>Add Existing Recipe!</h1>
+
+<%= form_for @user_recipe do |t| %>
+<%= t.collection_select :recipe_id, Recipe.all, :id, :name %>
+<%= t.submit 'Submit' %>
+<% end %>
+
+
+<p>Use cookies to access the user ID. Based off the user ID get a list of recipes
+  aleady consumed. List them in a drop down. When Selected create an instance of User_Recipe!</p>
