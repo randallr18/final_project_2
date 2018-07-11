@@ -1,0 +1,33 @@
+<h1>Here's your Progress on your fitness goal!</h1>
+
+<% if @userexercise.goal == nil %>
+<p>You need to <%= link_to "update your goals!", edit_user_exercise_path(@userexercise) %> </p>
+
+<% else %>
+
+<% case @userexercise.category.name  %>
+<% when "Distance" %>
+<p>You can run <%= @userexercise.progress %> kilometers making you <%= @userexercise.progress_pct %> of the way to your goal to run <%= @userexercise.goal %> kilometers!</p>
+
+<% when "Heart Rate" %>
+<p>You heart rate sits at <%= @userexercise.progress %> BPM making you <%= @userexercise.progress_pct %> of the way to your goal of <%= @userexercise.goal %> BPM!</p>
+
+<% when "Speed" %>
+<p>You can run <%= @userexercise.progress %> meters per second making you <%= @userexercise.progress_pct %> of the way to your goal to run <%= @userexercise.goal %> meters per second!</p>
+
+
+<% when "Strength Training" %>
+
+<p>You can lift <%= @userexercise.progress %> kilograms making you <%= @userexercise.progress_pct %> of the way to your goal to lift <%= @userexercise.goal %> kilograms!</p>
+
+<% when "Pace" %>
+
+<p>You can run at a pace of <%= @userexercise.progress %> km per hour <%= @userexercise.progress_pct %> of the way to your goal to run <%= @userexercise.goal %> km per hour!</p>
+
+<% when "Yoga" %>
+
+<p>You've attended <%= @userexercise.progress %> courses per month making you <%= @userexercise.progress_pct %> of the way to your goal of attending <%= @userexercise.goal %> courses per month!</p>
+
+<% end %>
+
+<% end %>

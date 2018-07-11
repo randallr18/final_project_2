@@ -1,6 +1,10 @@
 class UserExercisesController < ApplicationController
 
-  before_action :get_user_exercise, only: [:edit, :update]
+  before_action :get_user_exercise, only: [:edit, :update, :show]
+
+  def show
+  end
+
 
   def new
     @userexercise = UserExercise.new
@@ -31,11 +35,11 @@ class UserExercisesController < ApplicationController
   private
 
   def init_params
-    params.require(:user_exercise).permit(:user_id, :exercise_id)
+    params.require(:user_exercise).permit(:user_id, :exercise_id, :category_id)
   end
 
   def user_exercise_params
-    params.require(:user_exercise).permit(:pace, :distance, :max_weight, :courses_attended, :endurance)
+    params.require(:user_exercise).permit(:progress, :goal, :goal_category)
   end
 
   def get_user_exercise

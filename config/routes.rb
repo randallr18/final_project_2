@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get '/recipe/search', to: 'recipes#search', as: 'recipe_search'
   post '/recipe/find', to: 'recipes#find', as: 'recipe_find'
   resources :recipes
+  resources :categories
   resources :user_exercises
   resources :exercises
   get '/users/choice', to: 'users#choice', as: 'user_choice'
