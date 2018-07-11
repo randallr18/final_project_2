@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/login', to: 'sessions#new', as: 'new_login'
   resources :user_recipes
   get '/recipe/search', to: 'recipes#search', as: 'recipe_search'
   post '/recipe/find', to: 'recipes#find', as: 'recipe_find'
