@@ -2,7 +2,7 @@
 <hr>
 
 <%= form_with model: @userexercise do |f|  %>
-<%= f.collection_select :user_id, User.all, :id, :name %>
+<!-- <%= f.collection_select :user_id, User.all, :id, :name %> -->
 <%= f.label :exercise_id, 'Choose an Exercise!' %>
 <%= f.collection_select :exercise_id, Exercise.all, :id, :name   %>
 <%= f.label :category_id %>

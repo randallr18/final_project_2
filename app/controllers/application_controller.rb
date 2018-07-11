@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  # before_action :authorized?
+  before_action :authorized?
 
   private
 
@@ -12,10 +12,10 @@ class ApplicationController < ActionController::Base
   end
 
   def get_logged_in_user
-    @logged_in_user = User.find(logged_in_user) if logged_in_user
+    @logged_in_user = User.find(logged_in_user_id) if logged_in_user_id
   end
 
-  def authorized!
+  def authorized?
     redirect_to new_session_path unless !!get_logged_in_user
   end
 

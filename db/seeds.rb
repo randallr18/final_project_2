@@ -7,14 +7,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-<<<<<<< HEAD
 
-=======
+
+
+UserExercise.delete_all
+UserRecipe.delete_all
 User.delete_all
 Category.delete_all
 Exercise.delete_all
-UserExercise.delete_all
->>>>>>> exercise
+
 
 user1 = User.create(name: "Jarret", username:"jarrettt", hometown: "New York")
 user2 = User.create(name: "Risher", username:"rish-randall", hometown: "Houston")
@@ -22,7 +23,7 @@ user3 = User.create(name: "Chang", username:"chang-chang", hometown: "New York")
 user4 = User.create(name: "Fred", username:"funky-fred", hometown: "San Fransisco")
 user5 = User.create(name: "Sussie", username:"sneaky-sussie", hometown: "Boston")
 
-<<<<<<< HEAD
+
 # exercise1 = Exercise.create(name: "Running", description: "Tiring", category: "cardio")
 # exercise2 = Exercise.create(name: "BENCH", description: "push heavy weights", category: "strength")
 # exercise3 = Exercise.create(name: "Downward Dog", description: "Calming", category: "yoga")
@@ -54,7 +55,7 @@ recipe3 = Recipe.create(name: "BBQ", carbohydrate: 25, protein: 40, fat: 20, cal
 recipe4 = Recipe.create(name: "sushi", carbohydrate: 10, protein: 40, fat: 10, calorie_count: 400)
 recipe5 = Recipe.create(name: "sandwich", carbohydrate: 25, protein: 20, fat: 20, calorie_count: 500)
 recipe6 = Recipe.create(name: "salad", carbohydrate: 33, protein: 40, fat: 20, calorie_count: 100)
-=======
+
 exercise1 = Exercise.create(name: "Marathon", description: "The marathon is a long-distance race, completed by running, walking, or a run/walk strategy.")
 exercise2 = Exercise.create(name: "Bench Press", description: "Lateral Weight Training")
 exercise3 = Exercise.create(name: "Downward Dog", description: "Calming")
@@ -79,4 +80,3 @@ num7 = UserExercise.create(user_id: user4.id, exercise_id: exercise5.id, categor
 num8 = UserExercise.create(user_id: user4.id, exercise_id: exercise1.id, category_id: category2.id)
 num9 = UserExercise.create(user_id: user4.id, exercise_id: exercise6.id, category_id: category3.id)
 num10 = UserExercise.create(user_id: user5.id, exercise_id: exercise2.id, category_id: category4.id)
->>>>>>> exercise
