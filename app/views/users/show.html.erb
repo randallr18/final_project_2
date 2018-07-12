@@ -1,12 +1,9 @@
-<h1 align="center">Your Profile Information</h1>
+<h1 align="center"> <%= @user.name %>'s Wellness Plan! </h1>
 
 <hr>
 
-<h3>Hi <%= @user.name %> </h3>
 
-<p>Hometown: <%= @user.hometown %> </p>
-
-<h4>Your plan includes: </h4>
+<h1>Exercise !</h1>
 <% @user.user_exercises.each do |goal| %>
 <fieldset>
 <p> <strong> <%=link_to goal.exercise.name, user_exercise_path(goal) %> </strong> </p>  <br>
@@ -19,15 +16,42 @@
 
 <br>
 <br>
+<br>
+<br>
 
-<% @user.recipes.each do |meal| %>
+<h1>Nutrition !</h1>
+<body>
+  The ideal amount of calorie consumption per day is 2500 for males and 2000 for females! <br> <br>
+  The ideal distrubution of food types is CARBOHYDRATES - 50 %, PROTEINS - 27% and FATS - 23%! <br><br>
+  <%= @calories %> calories a day for <%= Time.now.strftime("%B") %> <br><br>
+  <% @breakdown_hash.each do |key, value| %>
+  <%= value %> % - <%= key %>
+  <br>
+  <br>
+  <% end %>
+
+</body>
+
+
+
+<!-- <% @user.recipes.each do |meal| %>
 <%= meal.name %>
 <br>
 <br>
-<% end %>
+<% end %> -->
 
+
+
+
+
+<%= form_tag user_month_nutrition_path do%>
+<label>Month:   </label>
+<%= select_month(Date.today) %>
+<%= submit_tag "Daily Overviews" %>
+<% end %>
 <br>
-<br>
+
+<!-- <%= link_to "Daily Overview", user_choice_path %> -->
 
 
 <%= link_to "Record Meal", user_choice_path %>

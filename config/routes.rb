@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :user_exercises
   resources :exercises
   get '/users/choice', to: 'users#choice', as: 'user_choice'
+  get '/users/month', to: 'users#display', as: 'user_display_nutrition'
+  post '/users/month', to: 'users#month', as: 'user_month_nutrition'
   resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

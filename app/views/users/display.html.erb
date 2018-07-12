@@ -1,0 +1,42 @@
+<% time_header = Time.new(2018, @month) %>
+<h1>Nutrition Statistics for <%= time_header.strftime("%B") %>!</h1>
+
+
+
+<% @all_meals.each do |day| %>
+<% time = Time.new(2018, @month.to_i, @all_meals.index(day) + 1) %>
+<h3><%= time.strftime("%B %e, %Y") %></h3>
+<br>
+<% if day.length > 0 %>
+  <% if day.length == 1 %>
+  ONLY 1 RECORDED  MEAL! <br><br>
+  <% elsif day.length == 2 %>
+  ONLY 2 RECORDED MEALS! <br><br>
+  <% else %>
+  <% end %>
+Total Calories: <%= @logged_in_user.total_calories_day(day) %>
+<% protein = @logged_in_user.total_proteins_day(day) %>
+<% carbohydrate = @logged_in_user.total_carbohydrates_day(day) %>
+<% fat = @logged_in_user.total_fats_day(day) %>
+<% total_foods = protein + carbohydrate + fat %>
+<br>
+Proteins - <%=  ((protein.to_f / total_foods.to_f)*100).round(2) %> % <br> Carbohydrates - <%= ((carbohydrate.to_f / total_foods.to_f)*100).round(2) %>% <br> Fats - <%= ((fat.to_f / total_foods.to_f)*100).round(2) %>%
+<br>
+<br>
+<strong>Meals</strong>
+<br>
+<% day.each do |meal| %>
+<%= meal.recipe.name %>
+<% end %>
+<% else %>
+<br>
+NO RECORDED MEALS!
+<br>
+<% end %>
+
+
+
+
+<br><br>
+
+<% end %>

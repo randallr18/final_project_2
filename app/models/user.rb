@@ -7,19 +7,119 @@ class User < ApplicationRecord
 
   has_secure_password
 
-  def average_calories_month
+  # MONTHLY STATISTICS
+
+  def average_calories_per_day
     time = Time.new
-    year = t.year
-    month = t.month
-    day = t.day
+    year = time.year
+    month = time.month
+    day = time.day
     counter = 1
+    total_calories_month = 0
     while day >= counter
       new_time = Time.new(year, month, counter)
       time_look_up = new_time.strftime("%Y-%m-%d")
-      @meals = UserRecipe.find_by()
+      @meals = UserRecipe.where(date_consumed: time_look_up)
+      if @meals != nil
+      total_calories_month += total_calories_day(@meals)
+      end
+      counter += 1
+    end
+    average_calories = total_calories_month / day
   end
 
-  def toal_calories_day
-
+  def total_calories_day(meals)
+    total_calories = 0
+    meals.map do |meal|
+      total_calories += meal.recipe.calorie_count
+    end
+    total_calories
   end
+
+  def average_breakdown_food_groups
+    time = Time.new
+    year = time.year
+    month = time.month
+    day = time.day
+    counter = 1
+    total_proteins_month = 0
+    total_carbohydrates_month = 0
+    total_fats_month = 0
+    while day >= counter
+      new_time = Time.new(year, month, counter)
+      time_look_up = new_time.strftime("%Y-%m-%d")
+      @meals = UserRecipe.where(date_consumed: time_look_up)
+      if @meals != nil
+      total_proteins_month += total_proteins_day(@meals)
+      total_carbohydrates_month += total_carbohydrates_day(@meals)
+      total_fats_month += total_fats_day(@meals)
+      end
+      counter += 1
+    end
+    total_foods = total_proteins_month + total_carbohydrates_month +total_fats_month
+    protein_breakdown =  total_proteins_month.to_f / total_foods.to_f
+    carbohydrate_breakdown = total_carbohydrates_month.to_f / total_foods.to_f
+    fat_breakdown = total_fats_month.to_f / total_foods.to_f
+    breakdown_hash = {}
+    breakdown_hash["proteins"] = (protein_breakdown * 100).round(2)
+    breakdown_hash["carbohydrates"] = (carbohydrate_breakdown * 100).round(2)
+    breakdown_hash["fats"] = (fat_breakdown * 100).round(2)
+    breakdown_hash
+  end
+
+  def total_proteins_day(meals)
+    total_proteins = 0
+    meals.map do |meal|
+      total_proteins += meal.recipe.protein
+    end
+    total_proteins
+  end
+
+  def total_carbohydrates_day(meals)
+    total_carbohydrates = 0
+    meals.map do |meal|
+      total_carbohydrates += meal.recipe.carbohydrate
+    end
+    total_carbohydrates
+  end
+
+  def total_fats_day(meals)
+    total_fats = 0
+    meals.map do |meal|
+      total_fats += meal.recipe.fat
+    end
+    total_fats
+  end
+
+
+  def all_meals_for_a_month(month)
+    time = Time.new
+    year = time.year
+    month_today = time.month
+    counter = 1
+    meals_array = []
+    if month_today == month
+      while time.day >= counter
+        new_time = Time.new(year, month, counter)
+        time_look_up = new_time.strftime("%Y-%m-%d")
+        @meals = UserRecipe.where(date_consumed: time_look_up)
+        if @meals != nil
+          meals_array << @meals
+        end
+        counter += 1
+      end
+    else
+      while 31 >= counter
+        new_time = Time.new(year, month, counter)
+        time_look_up = new_time.strftime("%Y-%m-%d")
+        @meals = UserRecipe.where(date_consumed: time_look_up)
+        if @meals != nil
+          meals_array << @meals
+        end
+        counter += 1
+      end
+    end
+    meals_array
+  end
+
 end

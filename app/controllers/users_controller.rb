@@ -24,6 +24,21 @@ class UsersController < ApplicationController
   end
 
   def show
+    @calories = @logged_in_user.average_calories_per_day
+    @breakdown_hash = @logged_in_user.average_breakdown_food_groups
+  end
+
+  def month
+    @month = params["date"]["month"]
+    save_month(@month)
+    redirect_to user_display_nutrition_path
+  end
+
+  def display
+    @month = get_month
+    get_logged_in_user
+    @all_meals = @logged_in_user.all_meals_for_a_month(@month.to_i)
+    delete_month
   end
 
 
@@ -36,5 +51,6 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:username, :password, :name, :hometown)
   end
+
 
 end

@@ -3,6 +3,18 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def save_month(month)
+    session[:month] = month
+  end
+
+  def get_month
+    @month = session[:month]
+  end
+
+  def delete_month
+    session[:month] = nil
+  end
+
   def log_in_user(user_id)
     session[:user_id] = user_id
   end
