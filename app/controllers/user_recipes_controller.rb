@@ -12,7 +12,6 @@ class UserRecipesController < ApplicationController
   end
 
   def create
-    byebug
     @user_recipe = UserRecipe.new(recipe_user_params)
     @user_recipe.user_id = @logged_in_user.id
     if @user_recipe.save
