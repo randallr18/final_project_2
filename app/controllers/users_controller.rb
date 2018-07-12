@@ -26,6 +26,7 @@ class UsersController < ApplicationController
   def show
     @calories = @logged_in_user.average_calories_per_day
     @breakdown_hash = @logged_in_user.average_breakdown_food_groups
+    @hours_slept = @logged_in_user.average_sleep_per_day
   end
 
   def month

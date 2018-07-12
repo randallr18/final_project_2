@@ -4,10 +4,11 @@ class User < ApplicationRecord
   has_many :user_recipes
   has_many :recipes, through: :user_recipes
   has_many :categories, through: :user_exercises
+  has_many :sleeps
 
   has_secure_password
 
-  # MONTHLY STATISTICS
+  # NUTRITION
 
   def average_calories_per_day
     time = Time.new
@@ -15,17 +16,19 @@ class User < ApplicationRecord
     month = time.month
     day = time.day
     counter = 1
+    count = 0
     total_calories_month = 0
     while day >= counter
       new_time = Time.new(year, month, counter)
       time_look_up = new_time.strftime("%Y-%m-%d")
       @meals = UserRecipe.where(date_consumed: time_look_up)
-      if @meals != nil
+      if @meals.length > 0
       total_calories_month += total_calories_day(@meals)
+      count += 1
       end
       counter += 1
     end
-    average_calories = total_calories_month / day
+    average_calories = total_calories_month / count
   end
 
   def total_calories_day(meals)
@@ -121,5 +124,30 @@ class User < ApplicationRecord
     end
     meals_array
   end
+
+  # SLEEP
+
+  def average_sleep_per_day
+    time = Time.new
+    year = time.year
+    month = time.month
+    day = time.day
+    counter = 1
+    count = 0
+    total_hours_slept = 0
+    while day >= counter
+      new_time = Time.new(year, month, counter)
+      time_look_up = new_time.strftime("%Y-%m-%d")
+      sleep_obj = Sleep.find_by(date: time_look_up)
+      if sleep_obj != nil
+        total_hours_slept += sleep_obj.hours
+        count += 1
+      end
+      counter += 1
+    end
+    total_hours_slept / count
+  end
+
+
 
 end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :sleeps
   resources :sessions, only: %i[new create]
   resources :user_recipes
   get '/recipe/search', to: 'recipes#search', as: 'recipe_search'

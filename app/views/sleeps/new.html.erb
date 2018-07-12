@@ -1,0 +1,9 @@
+
+<h1>Record a Night's Sleep!</h1>
+
+<%= form_for @sleep do |t| %>
+<%= t.label :hours %>
+<%= t.text_field :hours %>
+<%= t.date_select :date %>
+<%= t.submit 'Submit' %>
+<% end %>
