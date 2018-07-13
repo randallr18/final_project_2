@@ -6,8 +6,8 @@
 <!-- <p>At www.MakeYourLifeBetter.com we beleive in the 3 pillars of well-being, sleep, exercise and nutrion!
    Improve your well-being by tracking your performance in each category!  </p> -->
 
-
-<h1>Sleep - <%= @user.sleep_score %></h1>
+<h1>Aggregated Wellness Score - <%= @user.aggregate_score %> / 10</h1>
+<h2>Sleep - <%= @user.sleep_score %></h2>
 <body>
   The ideal amount of sleep is 8 hours a night! <br><br>
   <%= @hours_slept %> hours per night for <%= Time.now.strftime("%B") %>
@@ -24,7 +24,7 @@
 <%= link_to "Record A Night's Sleep", new_sleep_path %>
 
 <br><br>
-<h1>Exercise - <%= @user.exercise_score %></h1>
+<h2>Exercise - <%= @user.exercise_score %></h2>
 <body>
   In order to recieve the greatest benifts one should workout at least 4 times a week! <br><br>
   <%= @workouts_average %> per week for the past 4 weeks
@@ -47,7 +47,7 @@
 <br>
 <br>
 
-<h1>Nutrition !</h1>
+<h2>Nutrition - <%= @user.sleep_score %></h2>
 <body>
   The ideal amount of calorie consumption per day is 2500 for males and 2000 for females! <br> <br>
   The ideal distrubution of food types is carbohydrates - 50 %, proteins - 27% and fats - 23%! <br><br>

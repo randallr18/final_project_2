@@ -308,32 +308,7 @@ class User < ApplicationRecord
       return (score * 10).round(2)
     end
   end
-  #
-  # def all_workouts_for_month(month)
-  #   time = Time.new
-  #   year = time.year
-  #   month = time.month
-  #   day = time.day
-  #   counter = 1
-  #   all_workouts = []
-  #   while 28 >= counter
-  #     new_time = Time.new(year, month, day)
-  #     time_look_up = new_time.strftime("%Y-%m-%d")
-  #     workout_obj = UserExercise.find_by(date: time_look_up)
-  #     if workout_obj != nil
-  #       all_workouts << workout_obj
-  #     else
-  #       all_workouts << ''
-  #     end
-  #     day -= 1
-  #     if day == 0
-  #       month -= 1
-  #       day = 30
-  #     end
-  #     counter += 1
-  #   end
-  #   all_workouts.reverse
-  # end
+
 
 # AGGREGATE SCORE
   def aggregate_score
