@@ -27,6 +27,7 @@ class UsersController < ApplicationController
     @calories = @logged_in_user.average_calories_per_day
     @breakdown_hash = @logged_in_user.average_breakdown_food_groups
     @hours_slept = @logged_in_user.average_sleep_per_day
+    @workouts_average = @logged_in_user.average_workouts_per_past_4weeks
   end
 
   def month
@@ -52,6 +53,19 @@ class UsersController < ApplicationController
     @month = get_month
     get_logged_in_user
     @all_sleeps = @logged_in_user.all_sleeps_for_a_month(@month.to_i)
+    delete_month
+  end
+
+  def month_exercise
+    @month = params["date"]["month"]
+    save_month(@month)
+    redirect_to user_display_exercise_path
+  end
+
+  def display_exercise
+    @month = get_month
+    get_logged_in_user
+    @all_workouts = @logged_in_user.all_workouts_for_a_month(@month.to_i)
     delete_month
   end
 

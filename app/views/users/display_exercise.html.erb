@@ -1,0 +1,17 @@
+<% time_header = Time.new(2018, @month) %>
+<h1>Sleep Record for <%= time_header.strftime("%B") %>!</h1>
+
+
+<% @all_workouts.each_with_index do |workout, index| %>
+<% time = Time.new(2018, @month.to_i, index + 1) %>
+<h3> <%= time.strftime("%B %e, %Y") %> </h3>
+<% if workout == '' %>
+No Workout Completed!
+<% else %>
+<%= workout.exercise.name %>
+<% if workout.exercise.name == "Running" %>
+<br>Pace - <%= workout.pace %> (min/mile) <br> Distance - <%= workout.distance %> miles
+<% end %>
+<% end %>
+<br>
+<% end %>

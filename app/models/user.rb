@@ -28,7 +28,12 @@ class User < ApplicationRecord
       end
       counter += 1
     end
+    if total_calories_month == 0
+      average_calories = 0
+    else
     average_calories = total_calories_month / count
+    end
+    average_calories
   end
 
   def total_calories_day(meals)
@@ -125,6 +130,51 @@ class User < ApplicationRecord
     meals_array
   end
 
+  def nutrition_score_calories
+    average_calories = average_calories_per_day
+    if average_calories > 2500
+      difference = average_calories - 2500
+      score = ((2500 - difference).to_f / 2500.to_f)
+      return (score * 10).round(2)
+    else
+      score = (average_calories.to_f / 2500.to_f)
+      return (score * 10).round(2)
+    end
+  end
+
+  def nutrition_score_food_breakdown
+    breakdown_hash = average_breakdown_food_groups
+    if breakdown_hash["proteins"] > 27
+      difference = breakdown_hash["proteins"] - 27
+      protein_score = ((27 - difference).to_f / 27.to_f)
+      final_protein_score = (protein_score * 10).round(2)
+    else
+      protein_score = (breakdown_hash["proteins"].to_f / 2500.to_f)
+      final_protein_score = (protein_score * 10).round(2)
+    end
+    if breakdown_hash["carbohydrates"] > 27
+      difference = breakdown_hash["carbohydrates"] - 27
+      carbohydrate_score = ((27 - difference).to_f / 27.to_f)
+      final_carbohydrate_score = (carbohydrate_score * 10).round(2)
+    else
+      carbohydrate_score = (breakdown_hash["carbohydrates"].to_f / 2500.to_f)
+      final_carbohydrate_score = (carbohydrate_score * 10).round(2)
+    end
+    if breakdown_hash["fats"] > 27
+      difference = breakdown_hash["fats"] - 27
+      fat_score = ((27 - difference).to_f / 27.to_f)
+      final_fat_score = (fat_score * 10).round(2)
+    else
+      fat_score = (breakdown_hash["fats"].to_f / 2500.to_f)
+      final_fat_score = (fat_score * 10).round(2)
+    end
+    ((final_fat_score + final_protein_score + final_carbohydrate_score) / 3).round(2)
+  end
+
+  def nutrition_score
+    ((nutrition_score_calories + nutrition_score_food_breakdown) / 2).round(2)
+  end
+
   # SLEEP
 
   def average_sleep_per_day
@@ -180,6 +230,115 @@ class User < ApplicationRecord
     sleep_array
   end
 
+  def sleep_score
+    average_hours = average_sleep_per_day
+    if average_hours > 8
+      return 10
+    else
+      score = (average_hours / 8.to_f).round(3)
+      return (score * 10)
+    end
+  end
+
+  #EXERCISE
+
+  def average_workouts_per_past_4weeks
+    time = Time.new
+    year = time.year
+    month = time.month
+    day = time.day
+    counter = 1
+    total_workouts_completed = 0
+    while 28 >= counter
+      new_time = Time.new(year, month, day)
+      time_look_up = new_time.strftime("%Y-%m-%d")
+      workout_obj = UserExercise.find_by(date: time_look_up)
+      if workout_obj != nil
+        total_workouts_completed += 1
+      end
+      day -= 1
+      if day == 0
+        month -= 1
+        day = 30
+      end
+      counter += 1
+    end
+    ((total_workouts_completed.to_f / 28.to_f).round(2)) * 4
+  end
+
+
+  def all_workouts_for_a_month(month)
+    time = Time.new
+    year = time.year
+    month_today = time.month
+    counter = 1
+    workout_array = []
+    if month_today == month
+      while time.day >= counter
+        new_time = Time.new(year, month, counter)
+        time_look_up = new_time.strftime("%Y-%m-%d")
+        @workout = UserExercise.find_by(date: time_look_up)
+        if @workout != nil
+          workout_array << @workout
+        else
+          workout_array << ''
+        end
+        counter += 1
+      end
+    else
+      while 31 >= counter
+        new_time = Time.new(year, month, counter)
+        time_look_up = new_time.strftime("%Y-%m-%d")
+        @workout = UserExercise.find_by(dat: time_look_up)
+        if @workout != nil
+          workout_array << @workout
+        end
+        counter += 1
+      end
+    end
+    workout_array
+  end
+
+  def exercise_score
+    average_workouts = average_workouts_per_past_4weeks
+    if average_workouts > 4
+      return 10
+    else
+      score = (average_workouts / 4.to_f).round(3)
+      return (score * 10).round(2)
+    end
+  end
+  #
+  # def all_workouts_for_month(month)
+  #   time = Time.new
+  #   year = time.year
+  #   month = time.month
+  #   day = time.day
+  #   counter = 1
+  #   all_workouts = []
+  #   while 28 >= counter
+  #     new_time = Time.new(year, month, day)
+  #     time_look_up = new_time.strftime("%Y-%m-%d")
+  #     workout_obj = UserExercise.find_by(date: time_look_up)
+  #     if workout_obj != nil
+  #       all_workouts << workout_obj
+  #     else
+  #       all_workouts << ''
+  #     end
+  #     day -= 1
+  #     if day == 0
+  #       month -= 1
+  #       day = 30
+  #     end
+  #     counter += 1
+  #   end
+  #   all_workouts.reverse
+  # end
+
+# AGGREGATE SCORE
+  def aggregate_score
+    ((nutrition_score + sleep_score + exercise_score) / 3).round(2)
+  end
 
 
 end

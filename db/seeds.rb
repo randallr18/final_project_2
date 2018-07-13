@@ -57,12 +57,11 @@ recipe4 = Recipe.create(name: "sushi", carbohydrate: 10, protein: 40, fat: 10, c
 recipe5 = Recipe.create(name: "sandwich", carbohydrate: 25, protein: 20, fat: 20, calorie_count: 500)
 recipe6 = Recipe.create(name: "salad", carbohydrate: 33, protein: 40, fat: 20, calorie_count: 100)
 
-exercise1 = Exercise.create(name: "Marathon", description: "The marathon is a long-distance race, completed by running, walking, or a run/walk strategy.")
-exercise2 = Exercise.create(name: "Bench Press", description: "Lateral Weight Training")
-exercise3 = Exercise.create(name: "Downward Dog", description: "Calming")
-exercise4 = Exercise.create(name: "Walking", description: "Relaxing")
-exercise5 = Exercise.create(name: "Hot-Yoga", description: "Weight Loss")
-exercise6 = Exercise.create(name: "Squat", description: "Vertical Weight Training")
+exercise1 = Exercise.create(name: "Running", description: "The marathon is a long-distance race, completed by running, walking, or a run/walk strategy.")
+exercise2 = Exercise.create(name: "Yoga", description: "Lateral Weight Training")
+exercise3 = Exercise.create(name: "Strength-Training", description: "Calming")
+exercise4 = Exercise.create(name: "Sport", description: "Relaxing")
+
 
 category1 = Category.create(name: "Distance")
 category2 = Category.create(name: "Heart Rate")

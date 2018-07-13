@@ -1,11 +1,12 @@
-<h1 align = "center">Add a Fitness Goal!</h1>
+<h1>Record a Workout!</h1>
 <hr>
-
+<br><br>
 <%= form_with model: @userexercise do |f|  %>
 <!-- <%= f.collection_select :user_id, User.all, :id, :name %> -->
 <%= f.label :exercise_id, 'Choose an Exercise!' %>
 <%= f.collection_select :exercise_id, Exercise.all, :id, :name   %>
-<%= f.label :category_id %>
-<%= f.collection_select :category_id, Category.all, :id, :name %>
+<%= f.date_select :date %>
+<!-- <%= f.label :category_id %>
+<%= f.collection_select :category_id, Category.all, :id, :name %> -->
 <%= f.submit %>
 <% end %>

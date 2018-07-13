@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get '/users/sleepmonth', to: 'users#display_sleep', as: 'user_display_sleep'
   post '/users/sleepmonth', to: 'users#month_sleep', as: 'user_month_sleep'
+  get '/users/exercise', to: 'users#display_exercise', as: 'user_display_exercise'
+  post '/users/exercise', to: 'users#month_exercise', as: 'user_month_exercise'
   resources :sleeps
   resources :sessions, only: %i[new create]
   resources :user_recipes
