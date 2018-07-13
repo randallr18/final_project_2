@@ -43,11 +43,6 @@ ActiveRecord::Schema.define(version: 2018_07_13_132823) do
     t.integer "exercise_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "pace"
-    t.integer "distance"
-    t.integer "max_weight"
-    t.integer "endurance"
-    t.integer "courses_attended"
     t.float "progress"
     t.float "goal"
     t.string "goal_category"
