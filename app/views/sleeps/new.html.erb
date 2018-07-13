@@ -3,7 +3,7 @@
 
 <%= form_for @sleep do |t| %>
 <%= t.label :hours %>
-<%= t.text_field :hours %>
+<%= t.number_field :hours %>
 <%= t.date_select :date %>
 <%= t.submit 'Submit' %>
 <% end %>

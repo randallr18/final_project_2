@@ -21,15 +21,7 @@ recipe4 = Recipe.create(name: "sushi", carbohydrate: 10, protein: 40, fat: 10, c
 recipe5 = Recipe.create(name: "sandwich", carbohydrate: 25, protein: 20, fat: 20, calorie_count: 500)
 recipe6 = Recipe.create(name: "salad", carbohydrate: 33, protein: 40, fat: 20, calorie_count: 100)
 
-exercise1 = Exercise.create(name: "Running", description: "The marathon is a long-distance race, completed by running, walking, or a run/walk strategy.")
-exercise2 = Exercise.create(name: "Yoga", description: "Lateral Weight Training")
-exercise3 = Exercise.create(name: "Strength-Training", description: "Calming")
-exercise4 = Exercise.create(name: "Sport", description: "Relaxing")
-
-
-category1 = Category.create(name: "Distance")
-category2 = Category.create(name: "Heart Rate")
-category3 = Category.create(name: "Speed")
-category4 = Category.create(name: "Pace")
-category5 = Category.create(name: "Strength Training")
-category6 = Category.create(name: "Yoga")
+exercise1 = Exercise.create(name: "Running")
+exercise2 = Exercise.create(name: "Yoga")
+exercise3 = Exercise.create(name: "Strength-Training")
+exercise4 = Exercise.create(name: "Sport")

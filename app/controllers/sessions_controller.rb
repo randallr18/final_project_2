@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
   skip_before_action :authorized?, only: %i[new create]
 
   def new
+    log_out
   end
 
   def create
@@ -16,7 +17,7 @@ class SessionsController < ApplicationController
   end
 
   private
-  
+
   def user_params
     params.require(:session).permit(:username, :password)
   end

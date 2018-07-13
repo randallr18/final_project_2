@@ -3,7 +3,6 @@ class User < ApplicationRecord
   has_many :exercises, through: :user_exercises
   has_many :user_recipes
   has_many :recipes, through: :user_recipes
-  has_many :categories, through: :user_exercises
   has_many :sleeps
 
   has_secure_password
@@ -21,7 +20,7 @@ class User < ApplicationRecord
     while day >= counter
       new_time = Time.new(year, month, counter)
       time_look_up = new_time.strftime("%Y-%m-%d")
-      @meals = UserRecipe.where(date_consumed: time_look_up)
+      @meals = UserRecipe.where(date_consumed: time_look_up, user_id: self.id)
       if @meals.length > 0
       total_calories_month += total_calories_day(@meals)
       count += 1
@@ -56,7 +55,7 @@ class User < ApplicationRecord
     while day >= counter
       new_time = Time.new(year, month, counter)
       time_look_up = new_time.strftime("%Y-%m-%d")
-      @meals = UserRecipe.where(date_consumed: time_look_up)
+      @meals = UserRecipe.where(date_consumed: time_look_up, user_id: self.id)
       if @meals != nil
       total_proteins_month += total_proteins_day(@meals)
       total_carbohydrates_month += total_carbohydrates_day(@meals)
@@ -110,7 +109,7 @@ class User < ApplicationRecord
       while time.day >= counter
         new_time = Time.new(year, month, counter)
         time_look_up = new_time.strftime("%Y-%m-%d")
-        @meals = UserRecipe.where(date_consumed: time_look_up)
+        @meals = UserRecipe.where(date_consumed: time_look_up, user_id: self.id)
         if @meals != nil
           meals_array << @meals
         end
@@ -120,7 +119,7 @@ class User < ApplicationRecord
       while 31 >= counter
         new_time = Time.new(year, month, counter)
         time_look_up = new_time.strftime("%Y-%m-%d")
-        @meals = UserRecipe.where(date_consumed: time_look_up)
+        @meals = UserRecipe.where(date_consumed: time_look_up, user_id: self.id)
         if @meals != nil
           meals_array << @meals
         end
@@ -188,7 +187,7 @@ class User < ApplicationRecord
     while day >= counter
       new_time = Time.new(year, month, counter)
       time_look_up = new_time.strftime("%Y-%m-%d")
-      sleep_obj = Sleep.find_by(date: time_look_up)
+      sleep_obj = Sleep.find_by(date: time_look_up, user_id: self.id)
       if sleep_obj != nil
         total_hours_slept += sleep_obj.hours
         count += 1
@@ -208,7 +207,7 @@ class User < ApplicationRecord
       while time.day >= counter
         new_time = Time.new(year, month, counter)
         time_look_up = new_time.strftime("%Y-%m-%d")
-        @sleep = Sleep.find_by(date: time_look_up)
+        @sleep = Sleep.find_by(date: time_look_up, user_id: self.id)
         if @sleep != nil
           sleep_array << @sleep
         else
@@ -220,7 +219,7 @@ class User < ApplicationRecord
       while 31 >= counter
         new_time = Time.new(year, month, counter)
         time_look_up = new_time.strftime("%Y-%m-%d")
-        @sleep = Sleep.find_by(dat: time_look_up)
+        @sleep = Sleep.find_by(dat: time_look_up, user_id: self.id)
         if @sleep != nil
           sleep_array << @sleep
         end
@@ -252,7 +251,7 @@ class User < ApplicationRecord
     while 28 >= counter
       new_time = Time.new(year, month, day)
       time_look_up = new_time.strftime("%Y-%m-%d")
-      workout_obj = UserExercise.find_by(date: time_look_up)
+      workout_obj = UserExercise.find_by(date: time_look_up, user_id: self.id)
       if workout_obj != nil
         total_workouts_completed += 1
       end
@@ -277,7 +276,7 @@ class User < ApplicationRecord
       while time.day >= counter
         new_time = Time.new(year, month, counter)
         time_look_up = new_time.strftime("%Y-%m-%d")
-        @workout = UserExercise.find_by(date: time_look_up)
+        @workout = UserExercise.find_by(date: time_look_up, user_id: self.id)
         if @workout != nil
           workout_array << @workout
         else
@@ -289,7 +288,7 @@ class User < ApplicationRecord
       while 31 >= counter
         new_time = Time.new(year, month, counter)
         time_look_up = new_time.strftime("%Y-%m-%d")
-        @workout = UserExercise.find_by(dat: time_look_up)
+        @workout = UserExercise.find_by(date: time_look_up, user_id: self.id)
         if @workout != nil
           workout_array << @workout
         end

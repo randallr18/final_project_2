@@ -1,0 +1,9 @@
+<h1>Edit Sleep Record!</h1>
+
+<%= form_for @sleep do |t| %>
+<%= t.label "Hours Slept" %>
+<%= t.number_field :hours %>
+<%= t.submit 'Submit' %>
+<% end %>
+<br>
+<%= button_to "Delete Sleep Record", sleep_path(@sleep), method: 'delete' %>

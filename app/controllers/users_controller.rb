@@ -69,7 +69,6 @@ class UsersController < ApplicationController
     delete_month
   end
 
-
   private
 
   def get_user

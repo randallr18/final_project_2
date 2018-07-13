@@ -1,0 +1,9 @@
+<h1>Change Your Meal!</h1>
+
+<%= form_for @user_recipe do |t| %>
+<%= t.collection_select :recipe_id, Recipe.all, :id, :name %>
+<%= t.date_select :date_consumed %>
+<%= t.submit 'Submit' %>
+<% end %>
+<br>
+<%= button_to "Delete Meal", user_recipe_path(@user_recipe), method: 'delete' %>

@@ -31,5 +31,9 @@ class ApplicationController < ActionController::Base
     redirect_to new_session_path unless !!get_logged_in_user
   end
 
+  def log_out
+    session[:user_id] = nil
+  end
+
 
 end

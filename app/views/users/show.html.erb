@@ -5,6 +5,8 @@
    Improve your well-being by tracking your performance in each category!  </p> -->
 <h1>Aggregated Wellness Score - <%= @user.aggregate_score %> / 10</h1>
 
+<h5> <%= link_to "LOGOUT", new_session_path %> </h5>
+
 <!-- SLEEP -->
 
 <h2>Sleep - <%= @user.sleep_score %></h2>

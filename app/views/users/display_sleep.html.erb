@@ -1,6 +1,7 @@
 <% time_header = Time.new(2018, @month) %>
 <h1>Sleep Record for <%= time_header.strftime("%B") %>!</h1>
 
+<h5> <%= link_to "BACK", user_path(@logged_in_user) %> </h5>
 
 <% @all_sleeps.each_with_index do |day, index| %>
 <% time = Time.new(2018, @month.to_i, index + 1) %>
@@ -8,7 +9,7 @@
 <% if day == '' %>
 No Sleep Record Made!
 <% else %>
-<%= day.hours %> Hours
+<%= link_to "#{day.hours} Hours", edit_sleep_path(day) %>
 <% end %>
 <br>
 <% end %>

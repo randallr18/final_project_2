@@ -23,6 +23,8 @@ class UserExercisesController < ApplicationController
     end
   end
 
+  
+
   def edit
   end
 

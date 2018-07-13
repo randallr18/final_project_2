@@ -1,5 +1,6 @@
 <% time_header = Time.new(2018, @month) %>
 <h1>Nutrition Statistics for <%= time_header.strftime("%B") %>!</h1>
+<h5> <%= link_to "BACK", user_path(@logged_in_user) %> </h5>
 
 <% @all_meals.each do |day| %>
 <% time = Time.new(2018, @month.to_i, @all_meals.index(day) + 1) %>
@@ -24,7 +25,7 @@ Proteins - <%=  ((protein.to_f / total_foods.to_f)*100).round(2) %> % <br> Carbo
 <strong>Meals</strong>
 <br>
 <% day.each do |meal| %>
-<%= meal.recipe.name %>
+<%= link_to meal.recipe.name, edit_user_recipe_path(meal) %>
 <% end %>
 <% else %>
 <br>

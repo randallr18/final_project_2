@@ -1,10 +1,11 @@
 
+<% if @userexercise.exercise.name == "Running" %>
 <h1>Add Pace and Distance!</h1>
-
 <%= form_for @userexercise do |f| %>
 <%= f.label "Pace" %>
 <%= f.text_field :pace %> (minutes / mile) <br><br>
 <%= f.label "Distance" %>
 <%= f.text_field :distance %> (miles) <br><br>
 <%= f.submit %>
+<% end %>
 <% end %>
