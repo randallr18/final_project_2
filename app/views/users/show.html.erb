@@ -1,50 +1,77 @@
-<h1 align="center"> <%= @user.name %>'s Wellness Plan! </h1>
+<h1 align="center" class="display-2"> <%= @user.name %>'s Wellness Plan! </h1>
 <hr>
-<h4 align="center">"To keep the body in good health is a duty... otherwise we shall not be able to keep our mind strong and clear" - Buddha</h4>
+<blockquote class="blockquote text-center">
+<h5 class="mb-0">"To keep the body in good health is a duty... otherwise we shall not be able to keep our mind strong and clear." <footer class="blockquote-footer">Gautama Buddha</footer></h5>
+</blockquote>
 <!-- <p>At www.MakeYourLifeBetter.com we beleive in the 3 pillars of well-being, sleep, exercise and nutrion!
    Improve your well-being by tracking your performance in each category!  </p> -->
-<h1>Aggregated Wellness Score - <%= @user.aggregate_score %> / 10</h1>
+
+<% if @user.aggregate_score > 7.5 %>
+  <div class="alert alert-success" role="alert">
+    <h1>Aggregated Wellness Score - <%= @user.aggregate_score %> / 10 </h1>
+  </div>
+<% elsif @user.aggregate_score < 3.5  %>
+  <div class="alert alert-danger" role="alert">
+    <h1>Aggregated Wellness Score - <%= @user.aggregate_score %> / 10 </h1>
+  </div>
+<% else  %>
+<div class="alert alert-warning" role="alert">
+  <h1>Aggregated Wellness Score - <%= @user.aggregate_score %> / 10 </h1>
+</div>
+<% end %>
 
 <h5> <%= link_to "LOGOUT", new_session_path %> </h5>
 
 <!-- SLEEP -->
+<div class="card">
+  <div class="card-header">
+    <h2>Sleep - <%= @user.sleep_score %></h2>
+  </div>
 
-<h2>Sleep - <%= @user.sleep_score %></h2>
-<body>
-  The ideal amount of sleep is 8 hours a night! <br><br>
-  <%= @hours_slept %> hours per night for <%= Time.now.strftime("%B") %>
-</body>
-<br><br>
-<%= form_tag user_month_sleep_path do%>
-<label>Month:   </label>
-<%= select_month(Date.today) %>
-<%= submit_tag "Daily Overviews" %>
-<% end %>
+  <div class="card-body">
+    The ideal amount of sleep is 8 hours a night! <br><br>
+    <%= @hours_slept %> hours per night for <%= Time.now.strftime("%B") %>
+    <br><br>
+    <%= form_tag user_month_sleep_path do%>
+    <label>Month:   </label>
+    <%= select_month(Date.today) %>
+    <%= submit_tag "Daily Overviews" %>
+    <% end %>
+    <br>
+    <%= link_to "Record A Night's Sleep", new_sleep_path %>
+  </div>
+</div>
 <br>
-<%= link_to "Record A Night's Sleep", new_sleep_path %>
-<br><br>
-
 <!-- EXERCISE -->
+<div class="card">
+  <div class="card-header">
+    <h2>Exercise - <%= @user.exercise_score %></h2>
+  </div>
 
-<h2>Exercise - <%= @user.exercise_score %></h2>
-<body>
-  In order to recieve the greatest benifts one should workout at least 4 times a week! <br><br>
-  <%= @workouts_average %> per week for the past 4 weeks
-</body> <br> <br>
-<%= form_tag user_month_exercise_path do%>
-<label>Month:   </label>
-<%= select_month(Date.today) %>
-<%= submit_tag "Daily Overviews" %>
-<% end %>
+<div class="card-body">
+    In order to recieve the greatest benifts one should workout at least 4 times a week! <br><br>
+    <%= @workouts_average %> per week for the past 4 weeks
+  <br> <br>
+  <%= form_tag user_month_exercise_path do%>
+  <label>Month:   </label>
+  <%= select_month(Date.today) %>
+  <%= submit_tag "Daily Overviews" %>
+  <% end %>
+  <br>
+  <%= link_to "Record Workout", new_user_exercise_path %>
+  </div>
+</div>
+
 <br>
-<%= link_to "Record Workout", new_user_exercise_path %>
-<br>
-<br>
+
+
 
 <!-- NUTRITION -->
-
-<h2>Nutrition - <%= @user.nutrition_score %></h2>
-<body>
+<div class="card">
+  <div class="card-header">
+    <h2>Nutrition - <%= @user.nutrition_score %></h2>
+  </div>
+<div class="card-body">
   The ideal amount of calorie consumption per day is 2500 for males and 2000 for females! <br> <br>
   The ideal distrubution of food types is carbohydrates - 50 %, proteins - 27% and fats - 23%! <br><br>
   <%= @calories %> calories a day for <%= Time.now.strftime("%B") %> <br><br>
@@ -52,11 +79,14 @@
   <%= value %> % - <%= key %>
   <br><br>
   <% end %>
-</body>
-<%= form_tag user_month_nutrition_path do%>
-<label>Month:   </label>
-<%= select_month(Date.today) %>
-<%= submit_tag "Daily Overviews" %>
-<% end %>
+
+  <%= form_tag user_month_nutrition_path do%>
+  <label>Month:   </label>
+  <%= select_month(Date.today) %>
+  <%= submit_tag "Daily Overviews" %>
+  <% end %>
+  <br>
+  <%= link_to "Record Meal", user_choice_path %>
+  </div>
+</div>
 <br>
-<%= link_to "Record Meal", user_choice_path %>

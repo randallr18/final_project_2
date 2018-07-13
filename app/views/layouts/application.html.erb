@@ -9,7 +9,17 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <header>
+    <nav class="navbar navbar-light bg-light">
+       <span class="navbar-brand mb-0 h1">Risher Wellness</span>
+       <%= button_to "Login", new_session_path, method: 'get' %>
+    </nav>
+  </header>
+
   <body>
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
+
   </body>
 </html>

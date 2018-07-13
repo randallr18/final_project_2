@@ -9,7 +9,7 @@
 UserExercise.delete_all
 UserRecipe.delete_all
 User.delete_all
-Category.delete_all
+
 Exercise.delete_all
 Recipe.delete_all
 
