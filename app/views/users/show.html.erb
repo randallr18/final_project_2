@@ -3,8 +3,8 @@
 <hr>
 
 <h4 align="center">"To keep the body in good health is a duty... otherwise we shall not be able to keep our mind strong and clear" - Buddha</h4>
-<p>At www.MakeYourLifeBetter.com we beleive in the 3 pillars of well-being, sleep, exercise and nutrion!
-   Improve your well-being by tracking your performance in each category!  </p>
+<!-- <p>At www.MakeYourLifeBetter.com we beleive in the 3 pillars of well-being, sleep, exercise and nutrion!
+   Improve your well-being by tracking your performance in each category!  </p> -->
 
 
 <h1>Sleep !</h1>
@@ -12,8 +12,15 @@
   The ideal amount of sleep is 8 hours a night! <br><br>
   <%= @hours_slept %> hours per night for <%= Time.now.strftime("%B") %>
 </body>
-<br><br>
 
+
+<br><br>
+<%= form_tag user_month_sleep_path do%>
+<label>Month:   </label>
+<%= select_month(Date.today) %>
+<%= submit_tag "Daily Overviews" %>
+<% end %>
+<br>
 <%= link_to "Record A Night's Sleep", new_sleep_path %>
 
 <br><br>

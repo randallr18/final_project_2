@@ -42,6 +42,19 @@ class UsersController < ApplicationController
     delete_month
   end
 
+  def month_sleep
+    @month = params["date"]["month"]
+    save_month(@month)
+    redirect_to user_display_sleep_path
+  end
+
+  def display_sleep
+    @month = get_month
+    get_logged_in_user
+    @all_sleeps = @logged_in_user.all_sleeps_for_a_month(@month.to_i)
+    delete_month
+  end
+
 
   private
 

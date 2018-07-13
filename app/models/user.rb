@@ -145,7 +145,39 @@ class User < ApplicationRecord
       end
       counter += 1
     end
-    total_hours_slept / count
+    (total_hours_slept.to_f / count.to_f).round(2)
+  end
+
+  def all_sleeps_for_a_month(month)
+    time = Time.new
+    year = time.year
+    month_today = time.month
+    counter = 1
+    sleep_array = []
+    if month_today == month
+      while time.day >= counter
+        new_time = Time.new(year, month, counter)
+        time_look_up = new_time.strftime("%Y-%m-%d")
+        @sleep = Sleep.find_by(date: time_look_up)
+        if @sleep != nil
+          sleep_array << @sleep
+        else
+          sleep_array << ''
+        end
+        counter += 1
+      end
+    else
+      while 31 >= counter
+        new_time = Time.new(year, month, counter)
+        time_look_up = new_time.strftime("%Y-%m-%d")
+        @sleep = Sleep.find_by(dat: time_look_up)
+        if @sleep != nil
+          sleep_array << @sleep
+        end
+        counter += 1
+      end
+    end
+    sleep_array
   end
 
 
