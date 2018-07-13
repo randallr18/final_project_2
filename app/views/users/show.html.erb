@@ -1,12 +1,24 @@
-<h1 align="center"> <%= @user.name %>'s Wellness Plan! </h1>
+<h1 align="center" class="display-2"> <%= @user.name %>'s Wellness Plan! </h1>
 <hr>
-<h4 align="center">"To keep the body in good health is a duty... otherwise we shall not be able to keep our mind strong and clear" - Buddha</h4>
+<blockquote class="blockquote text-center">
+<h5 class="mb-0">"To keep the body in good health is a duty... otherwise we shall not be able to keep our mind strong and clear." <footer class="blockquote-footer">Gautama Buddha</footer></h5>
+</blockquote>
 <!-- <p>At www.MakeYourLifeBetter.com we beleive in the 3 pillars of well-being, sleep, exercise and nutrion!
    Improve your well-being by tracking your performance in each category!  </p> -->
 
-<div class="jumbotron">
+<% if @user.aggregate_score > 7.5 %>
+  <div class="alert alert-success" role="alert">
+    <h1>Aggregated Wellness Score - <%= @user.aggregate_score %> / 10 </h1>
+  </div>
+<% elsif @user.aggregate_score < 3.5  %>
+  <div class="alert alert-danger" role="alert">
+    <h1>Aggregated Wellness Score - <%= @user.aggregate_score %> / 10 </h1>
+  </div>
+<% else  %>
+<div class="alert alert-warning" role="alert">
   <h1>Aggregated Wellness Score - <%= @user.aggregate_score %> / 10 </h1>
 </div>
+<% end %>
 
 <!-- SLEEP -->
 <div class="card">
