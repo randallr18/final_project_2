@@ -1,8 +1,5 @@
 class RecipesController < ApplicationController
-
-  def search
-  end
-
+  
   def new
     @recipe = Recipe.new
   end
@@ -16,16 +13,10 @@ class RecipesController < ApplicationController
     end
   end
 
-  def find
-    byebug
-  end
-
-
   private
 
   def get_recipe_params
     params.require(:recipe).permit(:name, :protein, :carbohydrate, :fat)
   end
-
 
 end

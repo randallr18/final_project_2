@@ -1,5 +1,4 @@
 class UserExercisesController < ApplicationController
-
   before_action :get_user_exercise, only: [:edit, :update, :show]
 
   def show
@@ -11,7 +10,6 @@ class UserExercisesController < ApplicationController
   end
 
   def create
-    # byebug
     @userexercise = UserExercise.new(init_params)
     @userexercise.user_id = @logged_in_user.id
     if @userexercise.save

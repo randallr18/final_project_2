@@ -235,8 +235,8 @@ class User < ApplicationRecord
     if average_hours > 8
       return 10
     else
-      score = (average_hours / 8.to_f).round(3)
-      return (score * 10)
+      score = (average_hours / 8.to_f)
+      return ((score * 10)).round(2)
     end
   end
 

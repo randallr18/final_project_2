@@ -1,9 +1,13 @@
 class UsersController < ApplicationController
-
   before_action :get_user, only: [:show]
   skip_before_action :authorized?, only: %i[new create]
+
   def new
     @user = User.new
+  end
+
+  def index
+    @users = User.all
   end
 
   def create
@@ -14,10 +18,6 @@ class UsersController < ApplicationController
     else
       render :new
     end
-  end
-
-  def index
-    @users = User.all
   end
 
   def choice

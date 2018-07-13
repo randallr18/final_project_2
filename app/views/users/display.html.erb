@@ -1,8 +1,6 @@
 <% time_header = Time.new(2018, @month) %>
 <h1>Nutrition Statistics for <%= time_header.strftime("%B") %>!</h1>
 
-
-
 <% @all_meals.each do |day| %>
 <% time = Time.new(2018, @month.to_i, @all_meals.index(day) + 1) %>
 <h3><%= time.strftime("%B %e, %Y") %></h3>
@@ -33,9 +31,6 @@ Proteins - <%=  ((protein.to_f / total_foods.to_f)*100).round(2) %> % <br> Carbo
 NO RECORDED MEALS!
 <br>
 <% end %>
-
-
-
 
 <br><br>
 

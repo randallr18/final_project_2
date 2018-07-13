@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_action :authorized?, only: %i[new create]
+
   def new
   end
 
@@ -14,8 +15,10 @@ class SessionsController < ApplicationController
     end
   end
 
+  private
+  
   def user_params
     params.require(:session).permit(:username, :password)
   end
 
-  end
+end

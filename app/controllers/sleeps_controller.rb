@@ -1,4 +1,5 @@
 class SleepsController < ApplicationController
+
   def new
     @sleep = Sleep.new
   end
@@ -18,4 +19,5 @@ class SleepsController < ApplicationController
   def sleep_params
     params.require(:sleep).permit(:hours, "date(1i)", "date(2i)", "date(3i)")
   end
+  
 end
