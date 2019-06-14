@@ -1,0 +1,52 @@
+
+<% case @userexercise.category.name  %>
+<% when "Distance" %>
+<p>What is your goal?</p>
+  <%= form_for @userexercise do |f| %>
+  <p> I currently can run <%= f.text_field :progress %> kilometers, but I want to run <%= f.text_field :goal %> kilometers!!</p>
+  <%= f.submit %>
+  <% end %>
+
+<% when "Heart Rate" %>
+<p>What is your goal?</p>
+  <%= form_for @userexercise do |f| %>
+  <p> I currently heart rate of <%= f.text_field :progress %> BPM, but I want heart rate of <%= f.text_field :goal %> BPH!!</p>
+  <%= f.submit %>
+  <% end %>
+
+<% when "Speed" %>
+<p>What is your goal?</p>
+  <%= form_for @userexercise do |f| %>
+  <p> I currently fast <%= f.text_field :progress %> km per hour, but I want speed of <%= f.text_field :goal %> km per hour!!</p>
+  <%= f.submit %>
+  <% end %>
+
+
+<% when "Strength Training" %>
+  <p>What is your goal?</p>
+    <%= form_for @userexercise do |f| %>
+    <p> I currently can lift <%= f.text_field :progress %> kilograms, but I want to lift <%= f.text_field :goal%> kilograms!</p>
+    <%= f.submit %>
+    <% end %>
+
+<% when "Pace" %>
+  <p>What is your goal?</p>
+    <%= form_for @userexercise do |f| %>
+    <p> I currently run <%= f.text_field :progress %> km per hour, but I want to attend <%= f.text_field :goal %> km per hour!</p>
+    <%= f.submit %>
+    <% end %>
+
+
+
+<% when "Yoga" %>
+  <p>What is your goal?</p>
+    <%= form_for @userexercise do |f| %>
+    <p> I currently attend <%= f.text_field :progress %> classes a month, but I want to attend <%= f.text_field :goal %> classes per month!</p>
+    <%= f.submit %>
+    <% end %>
+  <% end %>
+
+<!-- form for @userexercise
+f.label :pace
+f.text_field :pace
+end -->

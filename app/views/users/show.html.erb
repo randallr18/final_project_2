@@ -1,0 +1,19 @@
+<h1 align="center">Your Profile Information</h1>
+
+<hr>
+
+<h3>Hi <%= @user.name %> </h3>
+
+<p>Hometown: <%= @user.hometown %> </p>
+
+<h4>Your plan includes: </h4>
+<% @user.user_exercises.each do |goal| %>
+<fieldset>
+<p> <strong> <%=link_to goal.exercise.name, user_exercise_path(goal) %> </strong> </p>  <br>
+<p> <%= goal.exercise.description %> </p> <br>
+<p> <%= button_to "Adjust your goal!", edit_user_exercise_path(goal), method: 'get' %> </p>
+<p> <%= button_to "Delete this workout", user_exercise_path(goal), method: "delete"  %> </p>
+</fieldset>
+<% end %>
+
+<%= link_to "Add New Workout to Your Repetoire!", new_user_exercise_path %>
